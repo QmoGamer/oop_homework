@@ -1,4 +1,4 @@
-class Config {
+export class Config {
     private readonly connectionString: string;
     private readonly destination: string;
     private readonly dir: string;
@@ -45,5 +45,3 @@ class Config {
         return false;
     }
 }
-
-let x = new Config('1', '2', '3', '4', '5', '6', '7', '8', '9');
