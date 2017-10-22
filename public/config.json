@@ -1,19 +1,20 @@
 {
-    "configs": [
+    "configs": 
+    [
         {
             "ext": "cs",
-            "location": "c:\Projects",
+            "location": "c:\\Projects",
             "subDirectory": true,
             "unit": "file",
             "remove": false,
             "handler": "zip",
             "destination": "directory",
-            "dir": "c:\MyArchieves",
+            "dir": "c:\\MyArchieves",
             "connectionString": ""
         },
         {
             "ext": "DOCX",
-            "location": "c:\Documents",
+            "location": "c:\\Documents",
             "subDirectory": true,
             "unit": "file",
             "remove": false,
@@ -24,14 +25,14 @@
         },
         {
             "ext": "jpg",
-            "location": "c:\Pictures",
+            "location": "c:\\Pictures",
             "subDirectory": true,
             "unit": "file",
             "remove": false,
             "handler": "",
             "destination": "directory",
-            "dir": "c:\MyArchieves",
+            "dir": "c:\\MyArchieves",
             "connectionString": ""
         }
-    ]
+    ]    
 }

@@ -39,9 +39,5 @@ export class Config {
         this.remove = remove;
         this.subDirectory = subDirectory;
         this.unit = unit;
-    }    
-
-    Config() {
-        return false;
     }
 }
