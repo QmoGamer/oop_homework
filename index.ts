@@ -2,6 +2,7 @@ import { MyBackupService } from './src/services/MyBackupService';
 
 let myBackupService = new MyBackupService;
 myBackupService.ProcessJsonConfigs();
+myBackupService.DoBackup();
 
 console.log('ok');
 
