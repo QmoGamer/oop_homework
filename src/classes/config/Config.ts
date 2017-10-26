@@ -1,14 +1,4 @@
 export class Config {
-    private readonly connectionString: string;
-    private readonly destination: string;
-    private readonly dir: string;
-    private readonly ext: string;
-    private readonly handler: string;
-    private readonly location: string;
-    private readonly remove: string;
-    private readonly subDirectory: string;
-    private readonly unit: string;
-
     get ConnectionString(): string { return this.connectionString; }
     get Destination(): string { return this.destination; }
     get Dir(): string { return this.dir; }
@@ -20,15 +10,15 @@ export class Config {
     get Unit(): string { return this.unit; }
 
     constructor(
-        connectionString: string, 
-        destination: string, 
-        dir: string, 
-        ext: string, 
-        handler: string, 
-        location: string, 
-        remove: string, 
-        subDirectory: string,
-        unit: string
+        private connectionString: string, 
+        private destination: string, 
+        private dir: string, 
+        private ext: string, 
+        private handler: string, 
+        private location: string, 
+        private remove: string, 
+        private subDirectory: string,
+        private unit: string
     ) {
         this.connectionString = connectionString;
         this.destination = destination;
