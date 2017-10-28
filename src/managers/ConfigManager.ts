@@ -1,33 +1,39 @@
 import { Config } from '../classes/Config';
 import { JsonManager } from './JsonManager';
 
+/**
+ * Class ConfigManager 
+ * @author Qmo
+ */
 export class ConfigManager extends JsonManager {
-    // public configs: Array<Config>;
-    
-    // get Count() {
-    //     if (!this.configs)
-    //         return 0;
 
-    //     return this.configs.length;
-    // }
-
-    // ProcessConfigs() {
-    //     let configJson = JSON.parse(fs.readFileSync('./public/config.json', 'utf8'));
-    //     this.configs = configJson.configs;
-    // }
-
+    /** @static String config.json 存放路徑  */
     private static PATH: string = './public/config.json';
+
+    /** @var Array configs 陣列  */
     private configs: Config[] = [];
 
+    /**
+     * 讀取 config.json 並存入 configs 陣列
+     * @return void
+     * @author Qmo
+     */
     public ProcessJsonConfig(): void
     {
-        let configObject: object = this.GetJsonObject(ConfigManager.PATH);
-        console.log(configObject);
-        // this.configs = configObject.configs;
-        // console.log(this.configs);
+        let configObject: any = this.GetJsonObject(ConfigManager.PATH);
+        this.configs = configObject.configs;
     }
     
+    /**
+     * 取得 configs 數量
+     * @return Number
+     * @author Qmo
+     */
     public Count() {
+        if( !this.configs ) {
+            return 0;
+        };
+
         return this.configs.length;
     }
 }
