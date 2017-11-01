@@ -38,14 +38,14 @@ export class Config {
      * @author Qmo
      */
     constructor(
-        private readonly connectionString: string, 
-        private readonly destination: string, 
-        private readonly dir: string, 
-        private readonly ext: string, 
-        private readonly handler: number[], 
-        private readonly location: string, 
-        private readonly remove: boolean, 
-        private readonly subDirectory: boolean,
-        private readonly unit: string
+        private connectionString: string, 
+        private destination: string, 
+        private dir: string, 
+        private ext: string, 
+        private handler: number[], 
+        private location: string, 
+        private remove: boolean, 
+        private subDirectory: boolean,
+        private unit: string
     ) { }
 }

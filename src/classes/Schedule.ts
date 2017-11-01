@@ -20,8 +20,8 @@ export class Schedule {
      * @author Qmo
      */
     constructor(
-        private readonly ext: string,
-        private readonly time: string,
-        private readonly interval: string
+        private ext: string,
+        private time: string,
+        private interval: string
     ) { }
 }
