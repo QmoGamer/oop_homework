@@ -7,7 +7,7 @@
             "subDirectory": true,
             "unit": "file",
             "remove": false,
-            "handlers": ["zip", "encode"],
+            "handlers": ["zip","encode"],
             "destination": "directory",
             "dir": "c:\\MyArchieves",
             "connectionString": ""
