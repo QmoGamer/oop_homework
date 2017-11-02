@@ -1,6 +1,6 @@
 import { Candidate } from '../classes/Candidate';
 
-interface Handle
+export interface Handler
 {
     Perform(candidate: Candidate, target: number[]): number[];
 }

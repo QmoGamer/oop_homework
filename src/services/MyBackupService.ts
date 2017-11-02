@@ -1,6 +1,9 @@
 import { JsonManager } from '../managers/JsonManager';
 import { ConfigManager } from '../managers/ConfigManager';
 import { ScheduleManager } from '../managers/ScheduleManager';
+import { Candidate } from '../classes/Candidate';
+import { Handler } from '../interfaces/Handler';
+import { HandlerFactory } from '../factories/HandlerFactory';
 
 /**
  * Class MyBackupService 
@@ -37,7 +40,15 @@ export class MyBackupService
      * @author Qmo
      */
     public DoBackup(): void
-    {        
+    {    
         console.log(this.managers);
+        HandlerFactory.Create('file');
+    }
+    
+    private FindHandlers(candidate: Candidate): Handler[]
+    {
+        let handlers: Handler[] = [];
+        HandlerFactory.Create('file');
+        return handlers;
     }
 }
