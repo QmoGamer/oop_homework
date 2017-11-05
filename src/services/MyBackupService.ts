@@ -30,7 +30,7 @@ export class MyBackupService
      */
     public ProcessJsonConfigs(): void
     {
-        for( let manager of this.managers ) {
+        for(let manager of this.managers) {
             manager.ProcessJsonConfig();
         };
     }
@@ -41,14 +41,37 @@ export class MyBackupService
      */
     public DoBackup(): void
     {    
-        console.log(this.managers);
-        HandlerFactory.Create('file');
+        let candidates = this.FindFiles();
+
+        for(let candidate of candidates) {
+            this.BroadcastToHanders(candidate);
+        };
+    }
+
+    private BroadcastToHanders(candidate: Candidate): void
+    {
+        let handlers = this.FindHandlers(candidate);
+
+        for(let handler of handlers) {
+            //target = handler.Perform(candidate, target);
+        };
+    }
+
+    private FindFiles(): Candidate[] 
+    {        
+        return [];
     }
     
     private FindHandlers(candidate: Candidate): Handler[]
     {
+        HandlerFactory.initialize();
+
         let handlers: Handler[] = [];
-        HandlerFactory.Create('file');
+        handlers.push(HandlerFactory.Create('file'));
+        handlers.push(HandlerFactory.Create('encode'));
+        handlers.push(HandlerFactory.Create('zip'));
+        handlers.push(HandlerFactory.Create('directory'));
+
         return handlers;
     }
 }

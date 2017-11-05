@@ -7,4 +7,6 @@ export class EncodeHandler extends AbstractHandler
     {
         return [];
     }
+
+    // to do
 }

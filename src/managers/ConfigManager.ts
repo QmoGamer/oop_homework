@@ -15,13 +15,27 @@ export class ConfigManager extends JsonManager {
 
     /**
      * 讀取 config.json 並存入 configs 陣列
-     * @return void
+     * @return Void
      * @author Qmo
      */
     public ProcessJsonConfig(): void
     {
         let configObject: any = this.GetJsonObject(ConfigManager.PATH);
-        this.configs = configObject.configs;
+
+        for(let config of configObject.configs){
+            let newConfig = new Config(
+                config.connectionString,
+                config.destination,
+                config.dir,
+                config.ext,
+                config.handlers,
+                config.location,
+                config.remove,
+                config.subDirectory,
+                config.unit
+            );            
+            this.configs.push(newConfig);            
+        }
     }
     
     /**
@@ -29,8 +43,9 @@ export class ConfigManager extends JsonManager {
      * @return Number
      * @author Qmo
      */
-    public Count() {
-        if( !this.configs ) {
+    public Count(): number 
+    {
+        if(!this.configs) {
             return 0;
         };
 

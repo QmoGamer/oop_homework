@@ -2,7 +2,8 @@
  * Class Schedule 
  * @author Qmo
  */
-export class Schedule {
+export class Schedule 
+{
     /**
      * @property String Ext
      * @property String Time
