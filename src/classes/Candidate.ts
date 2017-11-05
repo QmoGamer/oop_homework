@@ -26,7 +26,7 @@ export class Candidate
      * @param Number size 檔案大小
      */
     constructor(
-        private config: Config, 
+        private config: Config,
         private fileDateTime: string,
         private name: string,
         private processName: string,

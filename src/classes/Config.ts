@@ -39,13 +39,13 @@ export class Config
      * @author Qmo
      */
     constructor(
-        private connectionString: string, 
-        private destination: string, 
-        private dir: string, 
-        private ext: string, 
-        private handlers: number[], 
-        private location: string, 
-        private remove: boolean, 
+        private connectionString: string,
+        private destination: string,
+        private dir: string,
+        private ext: string,
+        private handlers: number[],
+        private location: string,
+        private remove: boolean,
         private subDirectory: boolean,
         private unit: string
     ) { }
