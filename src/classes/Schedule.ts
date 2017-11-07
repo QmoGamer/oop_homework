@@ -2,7 +2,12 @@
  * Class Schedule 
  * @author Qmo
  */
+<<<<<<< HEAD
 export class Schedule {
+=======
+export class Schedule 
+{
+>>>>>>> develop
     /**
      * @property String Ext
      * @property String Time
@@ -23,9 +28,13 @@ export class Schedule {
         private ext: string,
         private time: string,
         private interval: string
+<<<<<<< HEAD
     ) {
         this.ext = ext;
         this.time = time;
         this.interval = interval;
     }
+=======
+    ) { }
+>>>>>>> develop
 }
