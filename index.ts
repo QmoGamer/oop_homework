@@ -8,3 +8,5 @@ myBackupService.ProcessJsonConfigs();
 
 /** DoBackup */
 myBackupService.DoBackup();
+
+console.log('ok');

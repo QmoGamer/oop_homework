@@ -3,7 +3,9 @@ import { ConfigManager } from '../managers/ConfigManager';
 import { ScheduleManager } from '../managers/ScheduleManager';
 import { Candidate } from '../classes/Candidate';
 import { Handler } from '../interfaces/Handler';
+import { FileFinder } from '../interfaces/FileFinder';
 import { HandlerFactory } from '../factories/HandlerFactory';
+import * as fs from 'fs';
 
 /**
  * Class MyBackupService 
@@ -41,11 +43,14 @@ export class MyBackupService
      */
     public DoBackup(): void
     {    
-        let candidates = this.FindFiles();
+        let a = fs.statSync('./index.ts');
+        console.log(a);
 
-        for(let candidate of candidates) {
-            this.BroadcastToHanders(candidate);
-        };
+        let fileFinder: FileFinder = this.FindFiles();
+
+        // for(let candidate of fileFinder) {
+        //     this.BroadcastToHanders(candidate);
+        // };
     }
 
     private BroadcastToHanders(candidate: Candidate): void
