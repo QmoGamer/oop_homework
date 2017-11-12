@@ -3,33 +3,38 @@ import { Config } from '../classes/Config';
 import { Candidate } from '../classes/Candidate';
 import { AbstractFileFinder } from './AbstractFileFinder';
 
-export class LocalFileFinder extends AbstractFileFinder
+export class LocalFileFinder<T> extends AbstractFileFinder<T>
 {
     constructor(config: Config)
     {
         super(config);
 
-        if (config.SubDirectory)
-            this.files = this.GetSubDirectoryFiles(config);
-        else
-            this.files = this.GetFiles(config);
+        this.files = this.GetSubDirectoryFiles(config.Location, config.Ext, config.SubDirectory);        
     }
 
-    private GetSubDirectoryFiles(config: Config): string[]
-    {
-        return;
-    }
-
-    private GetFiles(config: Config): string[]
+    private GetSubDirectoryFiles(location: string, ext: string, subDirectory: boolean): string[]
     {
         let files: string[] = [];
+        let fsFiles: string[] = fs.readdirSync(location);
 
-        JSON.stringify(fs.readFileSync('./.ts', 'utf8'));
+        for (let fsFile of fsFiles) {
+            
+            if (subDirectory && fs.statSync(location+'/'+fsFile).isDirectory()) {
+                files = files.concat(this.GetSubDirectoryFiles(location+'/'+fsFile, ext, subDirectory));
+            }
+
+            if (fsFile.match(ext)) {
+                files.push(fsFile);
+            }
+        }
+
         return files;
     }
 
-    protected CreateCandidate(fileName: string): Candidate
-    {
-        return;
-    }
+    // protected CreateCandidate(fileName: string): Candidate
+    // {
+    //     let c: Candidate;
+
+    //     return c;
+    // }
 }

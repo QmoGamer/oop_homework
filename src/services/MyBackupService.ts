@@ -6,6 +6,8 @@ import { Handler } from '../interfaces/Handler';
 import { FileFinder } from '../interfaces/FileFinder';
 import { HandlerFactory } from '../factories/HandlerFactory';
 import * as fs from 'fs';
+import { Config } from '../classes/Config';
+import { FileFinderFactory } from '../factories/FileFinderFactory';
 
 /**
  * Class MyBackupService 
@@ -43,12 +45,22 @@ export class MyBackupService
      */
     public DoBackup(): void
     {    
-        let a = fs.statSync('./index.ts');
-        console.log(a);
+        // let fileFinder: FileFinder = this.FindFiles();
+        let newConfig = new Config(     
+            "db",
+            "directory",               
+            "./",
+            ".ts",
+            ["zip","encode"],
+            "./src",
+            false,
+            true,
+            "file"
+        );
+        let fileFinder = FileFinderFactory.Create('file', newConfig)
+        console.log(fileFinder);
 
-        let fileFinder: FileFinder = this.FindFiles();
-
-        // for(let candidate of fileFinder) {
+        // for (let candidate of fileFinder) {
         //     this.BroadcastToHanders(candidate);
         // };
     }
@@ -57,14 +69,34 @@ export class MyBackupService
     {
         let handlers = this.FindHandlers(candidate);
 
-        for(let handler of handlers) {
+        for (let handler of handlers) {
             //target = handler.Perform(candidate, target);
         };
     }
 
     private FindFiles(): Candidate[] 
     {        
-        return [];
+        let newConfig = new Config(     
+                "db",
+                "directory",               
+                "./",
+                "ts",
+                ["zip","encode"],
+                "./",
+                false,
+                false,
+                "file"
+        );
+
+        let newCandidate = new Candidate(
+            newConfig,
+            '',
+            '',
+            '',
+            0
+        )
+
+        return [newCandidate];
     }
     
     private FindHandlers(candidate: Candidate): Handler[]

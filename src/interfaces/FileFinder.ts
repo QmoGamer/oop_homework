@@ -1,4 +1,4 @@
-export interface FileFinder extends IterableIterator<T>
+export interface FileFinder<T> extends IterableIterator<T>
 {
-
+    
 }
