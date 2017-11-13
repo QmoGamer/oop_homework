@@ -1,12 +1,13 @@
 import { JsonManager } from '../managers/JsonManager';
 import { ConfigManager } from '../managers/ConfigManager';
 import { ScheduleManager } from '../managers/ScheduleManager';
-<<<<<<< HEAD
-=======
 import { Candidate } from '../classes/Candidate';
 import { Handler } from '../interfaces/Handler';
+import { FileFinder } from '../interfaces/FileFinder';
 import { HandlerFactory } from '../factories/HandlerFactory';
->>>>>>> develop
+import * as fs from 'fs';
+import { Config } from '../classes/Config';
+import { FileFinderFactory } from '../factories/FileFinderFactory';
 
 /**
  * Class MyBackupService 
@@ -33,11 +34,7 @@ export class MyBackupService
      */
     public ProcessJsonConfigs(): void
     {
-<<<<<<< HEAD
-        for( let manager of this.managers ) {
-=======
         for(let manager of this.managers) {
->>>>>>> develop
             manager.ProcessJsonConfig();
         };
     }
@@ -47,30 +44,58 @@ export class MyBackupService
      * @author Qmo
      */
     public DoBackup(): void
-<<<<<<< HEAD
-    {        
-        console.log(this.managers);
-=======
     {    
-        let candidates = this.FindFiles();
-
-        for(let candidate of candidates) {
-            this.BroadcastToHanders(candidate);
-        };
+        // let fileFinder: FileFinder = this.FindFiles();
+        let newConfig = new Config(     
+            "db",
+            "directory",               
+            "./",
+            ".ts",
+            ["zip","encode"],
+            "./src",
+            false,
+            true,
+            "file"
+        );
+        let fileFinder = FileFinderFactory.Create('file', newConfig);
+        
+        // for (let candidate of fileFinder) {
+        //     this.BroadcastToHanders(candidate);
+        // };
     }
 
     private BroadcastToHanders(candidate: Candidate): void
     {
         let handlers = this.FindHandlers(candidate);
 
-        for(let handler of handlers) {
+        for (let handler of handlers) {
             //target = handler.Perform(candidate, target);
         };
     }
 
     private FindFiles(): Candidate[] 
     {        
-        return [];
+        let newConfig = new Config(     
+                "db",
+                "directory",               
+                "./",
+                "ts",
+                ["zip","encode"],
+                "./",
+                false,
+                false,
+                "file"
+        );
+
+        let newCandidate = new Candidate(
+            newConfig,
+            '',
+            '',
+            '',
+            0
+        )
+
+        return [newCandidate];
     }
     
     private FindHandlers(candidate: Candidate): Handler[]
@@ -84,6 +109,5 @@ export class MyBackupService
         handlers.push(HandlerFactory.Create('directory'));
 
         return handlers;
->>>>>>> develop
     }
 }

@@ -15,19 +15,12 @@ export class ScheduleManager extends JsonManager
 
     /**
      * 讀取 schedule.json 並存入 schedules 陣列
-<<<<<<< HEAD
-     * @return void
-=======
      * @return Void
->>>>>>> develop
      * @author Qmo
      */
     public ProcessJsonConfig(): void
     {
         let scheduleObject: any = this.GetJsonObject(ScheduleManager.PATH);
-<<<<<<< HEAD
-        this.schedules = scheduleObject.schedules;
-=======
         
         for(let schedule of scheduleObject.schedules){
             let newSchedule = new Schedule(
@@ -37,7 +30,6 @@ export class ScheduleManager extends JsonManager
             );            
             this.schedules.push(newSchedule);            
         }
->>>>>>> develop
     }
     
     /**
@@ -45,16 +37,12 @@ export class ScheduleManager extends JsonManager
      * @return Number
      * @author Qmo
      */
-<<<<<<< HEAD
-    public Count() {
-=======
     public Count(): number 
     {
         if(!this.schedules) {
             return 0;
         };
 
->>>>>>> develop
         return this.schedules.length;
     }
 }
