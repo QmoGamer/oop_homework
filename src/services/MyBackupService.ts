@@ -57,9 +57,8 @@ export class MyBackupService
             true,
             "file"
         );
-        let fileFinder = FileFinderFactory.Create('file', newConfig)
-        console.log(fileFinder);
-
+        let fileFinder = FileFinderFactory.Create('file', newConfig);
+        
         // for (let candidate of fileFinder) {
         //     this.BroadcastToHanders(candidate);
         // };
